@@ -24,7 +24,7 @@ class  APIController:
 		"""
 	        Fetches the most starred repos created in the last 30 days
 	        and returns data as json
-	    """
+	        """
 		max_items = 100
 		start_date = date_from_last_30()
 
@@ -39,7 +39,7 @@ class  APIController:
 		"""
 	        Gets repo name,language url from each object in the data
 	        Returns generator object in the form [(name,url)...(name,url)]
-	    """
+	        """
 
 		items = map(lambda obj:(obj.get("name"),obj.get("languages_url")),self.api_data)
 
@@ -48,7 +48,7 @@ class  APIController:
 	def get_languages_from_data(self):
 		"""
 	        Gets languages from urls and returns results as a set
-	    """
+	        """
 
 		self.item_languages = {}
 		set_languages = set()                                        # cant hold duplicates
@@ -65,7 +65,7 @@ class  APIController:
 	def get_list_and_number_of_repos(self):
 		"""
 		    Returns object containing languages and corresponding repos
-	    """
+	        """
 
 		languages = list(self.languages)                                        # ['Java'...'Python']
 		data_dictionary = dict(zip(languages, ([] for language in languages)))  # {'Java':[]...'Python':[]}
@@ -79,7 +79,7 @@ class  APIController:
 	def get_consolidated(self):
 		"""
 		    Returns consolidated number of repos using a language and list of repos using a language
-	    """
+	        """
 
 		consolidated = {}
 		data = self.get_list_and_number_of_repos()
